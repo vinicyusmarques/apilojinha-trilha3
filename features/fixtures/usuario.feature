@@ -20,3 +20,4 @@ Entao é retornado os dados cadastrado com status code 201
 # Dado que o usuario "não informe o nome, usuario ou senha"
 # Quando é feito a requisição POST no endpoint usuario
 # Então é alertado que a requisição teve conflito com servidor
+

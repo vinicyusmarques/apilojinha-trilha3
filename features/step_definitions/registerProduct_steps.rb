@@ -22,9 +22,10 @@ Dado('o endpoint de produto para cadastro') do
             }.to_json
   end
   
-  Quando('ele faz a requisição GET') do
+  Quando('ele faz a requisição POST') do
     $response = HTTParty.post($uri_base, 
-        :body => @body,
-        :headers => {"Content-Type" => 'application/json', 
-                    "token" => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIyNzM4IiwidXN1YXJpb2xvZ2luIjoidmluaWN5dXMubWFycXVlcyIsInVzdWFyaW9ub21lIjoiVmluaWN5dXMifQ.x2dkXWUgPB2eb9SvW5WqiQ7FCIXaZ7QtYUWMq23Rcvg'})
-  end
+        :body => @body,:headers => {"Content-Type" => 'application/json', 
+            "token" => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQi'+
+            'OiIyNzM4IiwidXN1YXJpb2xvZ2luIjoidmluaWN5dXMubWFycXVlcyIsInVzdWFyaW9'+
+            'ub21lIjoiVmluaWN5dXMifQ.x2dkXWUgPB2eb9SvW5WqiQ7FCIXaZ7QtYUWMq23Rcvg'})
+    end

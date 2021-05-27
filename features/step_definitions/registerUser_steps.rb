@@ -18,7 +18,7 @@ Dado('o endpoint de usuario para cadastro') do
   
   Então('é retornado os dados cadastrado com status code {int}') do |int|
     puts "response body #{$response.body}"
-   #resposta = $response.body
+   resposta = $response.body
    #puts "response code #{$response.code}"
    expect($response.code).to eq(int)
   end
