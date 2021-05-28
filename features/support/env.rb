@@ -7,3 +7,4 @@ require 'faker'
 require 'json'
 require 'pry'
 
+$url = "http://165.227.93.41/lojinha/"

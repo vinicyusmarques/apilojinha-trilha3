@@ -1,22 +1,19 @@
-Dado('o endpoint de login da API') do
-    $uri_base = 'http://165.227.93.41/lojinha/login'
+Dado('o endpoint de {string} da API') do |string| 
+    $uri = $url << string
   end
   
-  Dado('o usuario informa os dados de autenticação') do
+  Dado('o usuario informa os dados de autenticação {string} {string}') do |user, pass|
     @body = {
-            "usuariologin": "vinicyus.teste",
-            "usuariosenha": "vini123"
+            "usuariologin": "#{user}",
+            "usuariosenha": "#{pass}"
         }.to_json
+    @user = Login.new(@body)
   end
 
   Quando('ele faz a requisição POST na API') do
-    $response = HTTParty.post($uri_base, 
-        :body => @body,:headers => {"Content-Type" => 'application/json'})
+    @response = @user.loginPost($uri)
   end
   
   Então('deverá receber token de autorização com status code {int}') do |int|
-    puts "response body #{$response.body}"
-    resposta = $response.body
-    #puts "response code #{$response.code}"
-    expect($response.code).to eq(int)
+    @user.validationStatus(@response, int)
   end

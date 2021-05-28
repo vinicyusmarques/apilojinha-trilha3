@@ -6,7 +6,7 @@ Funcionalidade: Cadastrar usuário
 
 @caduser
 Cenário: Cadastrar usuário para acessar API
-Dado o endpoint de usuario para cadastro
+Dado o endpoint de 'usuario' para cadastro
 E o usuario informe nome, usuario e senha
 Quando ele faz uma requisição POST
 Entao é retornado os dados cadastrado com status code 201

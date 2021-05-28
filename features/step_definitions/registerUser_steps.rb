@@ -1,24 +1,21 @@
-Dado('o endpoint de usuario para cadastro') do
-    $uri_base = 'http://165.227.93.41/lojinha/usuario'
+Dado('o endpoint de {string} para cadastro') do |string|
+  $uri = $url << string
   end
   
   Dado('o usuario informe nome, usuario e senha') do
+    
     @body = {
             "usuarionome": Faker::Name.name,
             "usuariologin": Faker::Name.name,
-            "usuariosenha": "123789"
+            "usuariosenha": "123456"
           }.to_json
+    @register = User.new(@body)
   end
   
   Quando('ele faz uma requisição POST') do
-    $response = HTTParty.post($uri_base, 
-    :body => @body,
-    :headers => {"Content-Type" => 'application/json'})
+    @response = @register.registerUser($uri)
   end
   
   Então('é retornado os dados cadastrado com status code {int}') do |int|
-    puts "response body #{$response.body}"
-   resposta = $response.body
-   #puts "response code #{$response.code}"
-   expect($response.code).to eq(int)
+    @register.validationStatus(@response, int)
   end
