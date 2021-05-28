@@ -3,13 +3,7 @@ Dado('o endpoint de {string} para cadastro') do |string|
   end
   
   Dado('o usuario informe nome, usuario e senha') do
-    
-    @body = {
-            "usuarionome": Faker::Name.name,
-            "usuariologin": Faker::Name.name,
-            "usuariosenha": "123456"
-          }.to_json
-    @register = User.new(@body)
+    @register = User.new(Faker::Name.name, Faker::Name.name, "123456")
   end
   
   Quando('ele faz uma requisição POST') do

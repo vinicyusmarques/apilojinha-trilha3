@@ -3,7 +3,6 @@ Dado('o endpoint de {string}') do |string|
 end
   
   Quando('quando o usuario faz a requisição GET') do
-    @product = Product.new
     $response = @product.getProduct($uri)
   end
   
@@ -16,10 +15,5 @@ end
   end
 
   Quando('quando ele faz a requisição GET') do
-    @product = Product.new
     $response = @product.getProduct($uri)
   end
-  
-  # Entao('é retornado os dados do produto com status code {int}') do |int|
-  #   @product.validationStatus($response, int)
-  # end

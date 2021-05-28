@@ -28,4 +28,24 @@ class Product
             :headers => {"Content-Type" => 'application/json', 
                             "token" => @token})
     end
+
+    def data_product
+        return {
+            "produtonome": "iphone 12",
+            "produtovalor": Faker::Commerce.price,
+            "produtocores": [
+                Faker::Commerce.color
+            ],
+            "componentes": [
+                {
+                    "componentenome": Faker::Commerce.material,
+                    "componentequantidade": 1
+                },
+                {
+                    "componentenome": Faker::Commerce.material,
+                    "componentequantidade": 1
+                }
+            ]
+        }.to_json
+    end
 end
