@@ -3,11 +3,7 @@ Dado('o endpoint de {string} da API') do |string|
   end
   
   Dado('o usuario informa os dados de autenticação {string} {string}') do |user, pass|
-    @body = {
-            "usuariologin": "#{user}",
-            "usuariosenha": "#{pass}"
-        }.to_json
-    @user = Login.new(@body)
+    @user = Login.new(user, pass)
   end
 
   Quando('ele faz a requisição POST na API') do
