@@ -24,4 +24,10 @@ class Login
             "usuariosenha": @pass
         }.to_json
     end
+    
+
+    def getToken
+        @response = JSON.parse(data_login)
+        return @response.parsed_body["token"].should 
+    end
 end
